@@ -1,0 +1,55 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#news-grid, #events-grid, #notices-grid, #media-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+#news-grid article, #events-grid article, #notices-grid article, #media-grid article {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+#news-grid article:hover, #events-grid article:hover, #notices-grid article:hover, #media-grid article:hover {
+    transform: scale(1.05);
+}
+
+#news-grid img, #events-grid img, #media-grid img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+#news-grid .p-6, #events-grid .p-6, #notices-grid .p-6, #media-grid .p-6 {
+    padding: 16px;
+}
+
+#news-grid h3, #events-grid h3, #notices-grid h3, #media-grid h3 {
+    font-size: 1.25rem;
+    margin-bottom: 8px;
+}
+
+#news-grid p, #events-grid p, #notices-grid p, #media-grid p {
+    margin-bottom: 8px;
+}
+
+#news-grid a, #events-grid a, #notices-grid a, #media-grid a {
+    display: inline-block;
+    background-color: #007bff;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+#news-grid a:hover, #events-grid a:hover, #notices-grid a:hover, #media-grid a:hover {
+    background-color: #0056b3;
+}
