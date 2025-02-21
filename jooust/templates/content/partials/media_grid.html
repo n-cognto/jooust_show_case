@@ -1,0 +1,23 @@
+{# templates/content/partials/media_grid.html #}
+{% for media in media_items %}
+<article class="bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
+    {% if media.media_type == 'youtube' %}
+    <div class="aspect-w-16 aspect-h-9">
+        <iframe src="{{ media.get_youtube_embed_url }}" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen
+                class="w-full h-full">
+        </iframe>
+    </div>
+    {% else %}
+    <img src="{{ media.image.url }}" 
+         alt="{{ media.title }}"
+         class="w-full h-48 object-cover">
+    {% endif %}
+    <div class="p-6">
+        <h3 class="text-xl font-semibold mb-2">{{ media.title }}</h3>
+        <p class="text-gray-700">{{ media.description_preview }}</p>
+    </div>
+</article>
+{% endfor %}

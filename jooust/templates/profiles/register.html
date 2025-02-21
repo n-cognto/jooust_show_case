@@ -1,0 +1,249 @@
+{% extends 'base.html' %}
+
+{% block title %}Register - JOOUST{% endblock %}
+
+{% block extra_css %}
+<style>
+    .register-container {
+        max-width: 600px;
+        margin: 40px auto;
+        padding: 30px;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .register-header {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .register-header h2 {
+        color: #1a237e;
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+
+    .register-header p {
+        color: #666;
+        font-size: 16px;
+    }
+
+    .register-form {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .form-row {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .form-group label {
+        font-weight: 500;
+        color: #333;
+    }
+
+    .form-group input {
+        padding: 12px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 16px;
+        transition: all 0.3s;
+    }
+
+    .form-group input:focus {
+        outline: none;
+        border-color: #1a237e;
+        box-shadow: 0 0 0 2px rgba(26, 35, 126, 0.1);
+    }
+
+    .error-message {
+        color: #dc3545;
+        font-size: 14px;
+        margin-top: 4px;
+    }
+
+    .submit-button {
+        background-color: #1a237e;
+        color: white;
+        padding: 14px;
+        border: none;
+        border-radius: 4px;
+        font-size: 16px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        margin-top: 10px;
+    }
+
+    .submit-button:hover {
+        background-color: #151b4f;
+    }
+
+    .help-text {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 14px;
+        color: #666;
+    }
+
+    .help-text a {
+        color: #1a237e;
+        text-decoration: none;
+    }
+
+    .help-text a:hover {
+        text-decoration: underline;
+    }
+
+    .errorlist {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        color: #dc3545;
+        font-size: 14px;
+    }
+
+    .alert {
+        padding: 12px;
+        border-radius: 4px;
+        margin-bottom: 20px;
+    }
+
+    .alert-danger {
+        background-color: #f8d7da;
+        border: 1px solid #f5c6cb;
+        color: #721c24;
+    }
+
+    .alert-success {
+        background-color: #d4edda;
+        border: 1px solid #c3e6cb;
+        color: #155724;
+    }
+
+    .requirements-list {
+        background-color: #f8f9fa;
+        padding: 15px;
+        border-radius: 4px;
+        margin: 20px 0;
+    }
+
+    .requirements-list h3 {
+        color: #1a237e;
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+
+    .requirements-list ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .requirements-list li {
+        color: #666;
+        font-size: 14px;
+        margin-bottom: 5px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .requirements-list li::before {
+        content: "•";
+        color: #1a237e;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="register-container">
+    <div class="register-header">
+        <h2>Create Your JOOUST Account</h2>
+        <p>Join our academic community</p>
+    </div>
+
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{% if message.tags %}{{ message.tags }}{% endif %}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <form method="post" class="register-form">
+        {% csrf_token %}
+        
+        {% if form.non_field_errors %}
+            <div class="alert alert-danger">
+                {{ form.non_field_errors }}
+            </div>
+        {% endif %}
+
+        <div class="form-row">
+            <div class="form-group">
+                <label for="{{ form.username.id_for_label }}">Username</label>
+                {{ form.username }}
+                {% if form.username.errors %}
+                    <div class="error-message">{{ form.username.errors }}</div>
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.email.id_for_label }}">Email Address</label>
+                {{ form.email }}
+                {% if form.email.errors %}
+                    <div class="error-message">{{ form.email.errors }}</div>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label for="{{ form.password1.id_for_label }}">Password</label>
+                {{ form.password1 }}
+                {% if form.password1.errors %}
+                    <div class="error-message">{{ form.password1.errors }}</div>
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                <label for="{{ form.password2.id_for_label }}">Confirm Password</label>
+                {{ form.password2 }}
+                {% if form.password2.errors %}
+                    <div class="error-message">{{ form.password2.errors }}</div>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="requirements-list">
+            <h3>Password Requirements</h3>
+            <ul>
+                <li>At least 8 characters long</li>
+                <li>Must contain at least one number</li>
+                <li>Must contain at least one uppercase letter</li>
+                <li>Must contain at least one special character</li>
+                <li>Cannot be similar to your username or email</li>
+            </ul>
+        </div>
+
+        <button type="submit" class="submit-button">
+            Create Account
+        </button>
+    </form>
+
+    <div class="help-text">
+        <p>Already have an account? <a href="{% url 'login' %}">Login here</a></p>
+    </div>
+</div>
+{% endblock %}

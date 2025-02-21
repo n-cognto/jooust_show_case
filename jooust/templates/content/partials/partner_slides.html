@@ -1,0 +1,87 @@
+<div class="partner-slideshow-container">
+    <div class="partner-slideshow">
+        {% for logo in partner_logos %}
+        <div class="partner-slide">
+            <img src="{{ logo.logo.url }}" alt="{{ logo.name }}">
+        </div>
+        {% endfor %}
+    </div>
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+</div>
+
+<script>
+let slideIndex = 0;
+showSlides();
+
+function plusSlides(n) {
+    showSlides(slideIndex += n);
+}
+
+function showSlides(n) {
+    let i;
+    let slides = document.getElementsByClassName("partner-slide");
+    if (n > slides.length - 5) {slideIndex = 0}
+    if (n < 0) {slideIndex = slides.length - 5}
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+    for (i = slideIndex; i < slideIndex + 5; i++) {
+        slides[i].style.display = "block";
+    }
+}
+
+setInterval(() => {
+    plusSlides(1);
+}, 5000);
+</script>
+
+<style>
+.partner-slideshow-container {
+    position: relative;
+    max-width: 100%;
+    margin: auto;
+    overflow: hidden;
+}
+
+.partner-slideshow {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.partner-slide {
+    min-width: 20%;
+    box-sizing: border-box;
+    display: none;
+    padding: 0 10px; /* Add spacing between logos */
+}
+
+.partner-slide img {
+    width: 100%;
+    vertical-align: middle;
+}
+
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+    color: black; /* Change arrow color to black */
+    font-weight: bold; /* Make arrows bold */
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+}
+
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(0,0,0,0.8);
+}
+</style>
