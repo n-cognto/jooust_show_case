@@ -53,3 +53,12 @@
 #news-grid a:hover, #events-grid a:hover, #notices-grid a:hover, #media-grid a:hover {
     background-color: #0056b3;
 }
+
+.login-footer {
+    text-align: center;
+    color: rgb(20, 7, 7);
+    font-size: 1.2rem;
+    padding: 0.8rem 0;
+    width: 100%;
+    background-color: #f5f5f5;
+}
