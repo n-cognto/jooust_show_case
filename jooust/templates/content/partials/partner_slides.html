@@ -6,33 +6,35 @@
         </div>
         {% endfor %}
     </div>
-    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    <a class="prev" onclick="plusPartnerSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusPartnerSlides(1)">&#10095;</a>
 </div>
 
 <script>
-let slideIndex = 0;
-showSlides();
+let partnerSlideIndex = 0;
+showPartnerSlides(partnerSlideIndex);
 
-function plusSlides(n) {
-    showSlides(slideIndex += n);
+function plusPartnerSlides(n) {
+    showPartnerSlides(partnerSlideIndex += n);
 }
 
-function showSlides(n) {
+function showPartnerSlides(n) {
     let i;
     let slides = document.getElementsByClassName("partner-slide");
-    if (n > slides.length - 5) {slideIndex = 0}
-    if (n < 0) {slideIndex = slides.length - 5}
+    if (n >= slides.length) {partnerSlideIndex = 0}
+    if (n < 0) {partnerSlideIndex = slides.length - 5}
     for (i = 0; i < slides.length; i++) {
         slides[i].style.display = "none";
     }
-    for (i = slideIndex; i < slideIndex + 5; i++) {
-        slides[i].style.display = "block";
+    for (i = partnerSlideIndex; i < partnerSlideIndex + 5; i++) {
+        if (slides[i]) {
+            slides[i].style.display = "block";
+        }
     }
 }
 
 setInterval(() => {
-    plusSlides(1);
+    plusPartnerSlides(1);
 }, 5000);
 </script>
 
@@ -58,6 +60,8 @@ setInterval(() => {
 
 .partner-slide img {
     width: 100%;
+    height: 150px; /* Set a uniform height */
+    object-fit: contain; /* Ensure the image fits within the area */
     vertical-align: middle;
 }
 
