@@ -1,294 +1,270 @@
-<!-- navbar.html -->
 <style>
-    /* Top bar styles */
+    /* Previous styles remain the same until dropdown styles */
     .top-bar {
-    background-color: #1B237E;
-    padding: 8px 0;
-    height: 35px;
-    margin: 0%;
-}
-
-.top-bar-links {
-    display: flex;
-    justify-content: space-between;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 15px;
-}
-
-.left-links, .right-links {
-    display: flex;
-    align-items: center;
-}
-
-.top-bar a {
-    color: #FFD700;
-    text-decoration: none;
-    font-size: 12px;
-    font-weight: bold;
-    padding: 0;
-    margin: 0;
-}
-/* Add pipe separator after each link except the last one */
-.left-links a:not(:last-child)::after,
-.right-links a:not(:last-child)::after {
-    content: "|";
-    color: #FFD700;
-    margin: 0 8px;
-    font-weight: normal;
-}
-
-/* Remove any margin/padding from the last items */
-.left-links a:last-child,
-.right-links a:last-child {
-    margin-right: 0;
-}
-
-/* Remove any margin/padding from the first items */
-.left-links a:first-child,
-.right-links a:first-child {
-    margin-left: 0;
-}
-
-
-/* Main navbar styles */
-.navbar {
-    background: white;
-    padding: 10px 0;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.navbar-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 15px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.logo-container {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-.logo-img {
-    height: 60px;
-    width: auto;
-}
-
-.logo-text {
-    line-height: 1.2;
-}
-
-.logo-text h1 {
-    color: #1B237E;
-    font-size: 22px;
-    margin: 0;
-    font-weight: bold;
-}
-
-.logo-text p {
-    color: #333;
-    font-size: 16px;
-    margin: 3px 0 0 0;
-}
-
-.nav-links {
-    display: flex;
-    align-items: center;
-    gap: 25px;
-}
-
-.nav-links a {
-    color: rgb(24, 128, 12);
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: 500;
-    padding: 8px 0;
-    position: relative;
-}
-
-/* Hover effect with green underline */
-.nav-links a::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 3px;
-    background-color: #4CAF50;
-    transition: width 0.3s ease;
-}
-
-.nav-links a:hover::after {
-    width: 100%;
-}
-
-/* Active state */
-.nav-links a.active {
-    color: #4CAF50;
-}
-
-.nav-links a.active::after {
-    width: 100%;
-}
-
-/* Dropdown styles */
-.dropdown {
-    position: relative;
-}
-
-.dropdown > a::after {
-    content: '▼';
-    font-size: 10px;
-    margin-left: 5px;
-    vertical-align: middle;
-    color: #4CAF50;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    left: 100%; /* Position the dropdown content to the right of the link */
-    top: 0;
-    background-color: white;
-    min-width: 160px;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-    z-index: 1;
-}
-
-.dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-}
-
-.dropdown-content a:hover {
-    background-color: #ddd;
-}
-
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-
-/* Menu toggle for mobile */
-.menu-toggle {
-    display: none;
-    font-size: 24px;
-    cursor: pointer;
-    color: #1B237E;
-}
-
-/* Responsive styles */
-@media (max-width: 768px) {
-    .nav-links {
-        display: none;
+        background-color: #1B237E;
+        padding: 8px 0;
+        height: 35px;
+        margin: 0%;
+        width: 100%;
     }
-    
-    .menu-toggle {
+
+    .top-bar-links {
+        display: flex;
+        justify-content: space-between;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 15px;
+    }
+
+    .left-links, .right-links {
+        display: flex;
+        align-items: center;
+    }
+
+    .top-bar a {
+        color: #FFD700;
+        text-decoration: none;
+        font-size: 12px;
+        font-weight: bold;
+        padding: 0;
+        margin: 0;
+    }
+
+    .left-links a:not(:last-child)::after,
+    .right-links a:not(:last-child)::after {
+        content: "|";
+        color: #FFD700;
+        margin: 0 8px;
+        font-weight: normal;
+    }
+
+    .left-links a:last-child,
+    .right-links a:last-child {
+        margin-right: 0;
+    }
+
+    .left-links a:first-child,
+    .right-links a:first-child {
+        margin-left: 0;
+    }
+
+    .navbar {
+        background: white;
+        padding: 10px 0;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        width: 100%;
+    }
+
+    .navbar-container {
+        width: 100%;
+        margin: 0 auto;
+        padding: 0 15px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .logo-container {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .logo-img {
+        height: 60px;
+        width: auto;
+    }
+
+    .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 25px;
+    }
+
+    .nav-links a {
+        color: rgb(24, 128, 12);
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 500;
+        padding: 8px 0;
+        position: relative;
+    }
+
+    /* Updated dropdown styles */
+    .dropdown {
+        position: relative;
+    }
+
+    .dropdown > a {
+        display: inline-flex;  /* Changed to inline-flex */
+        align-items: center;
+        gap: 4px;  /* Add small gap between text and arrow */
+    }
+
+    /* Updated dropdown arrow */
+    .dropdown > a::after {
+        content: '▼';
+        font-size: 10px;
+        color: #4CAF50;
+        margin-left: 2px;  /* Small margin for spacing */
+        transform: translateY(1px);  /* Slight vertical adjustment */
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        top: 100%;  /* Changed from left positioning to top */
+        left: 0;    /* Align with the left of the dropdown */
+        background-color: white;
+        min-width: 160px;
+        box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        z-index: 1;
+    }
+
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
         display: block;
     }
-    
-    .nav-links.active {
-        display: flex;
-        flex-direction: column;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background: white;
-        padding: 20px;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        z-index: 1000;
+
+    .dropdown-content a:hover {
+        background-color: #ddd;
     }
-    
-    .nav-links.active a {
-        padding: 10px 0;
+
+    .dropdown:hover .dropdown-content {
+        display: block;
     }
-}
-    </style>
-    
-    <div class="top-bar">
-        <div class="top-bar-links">
-            <div class="left-links">
-                <a href="#">ADMISSION PORTAL</a>
-                <a href="#">STUDENTS PORTAL</a>
-                <a href="#">STAFF PORTAL</a>
-                <a href="#">QMS PORTAL</a>
-            </div>
-            <div class="right-links">
-                <a href="#">LIBRARY</a>
-                <a href="#">ELEARNING</a>
-                <a href="#">STAFF EMAIL</a>
-                <a href="#">COVID 19 INFORMATION</a>
-            </div>
+
+    /* Rest of the styles remain the same */
+    @media (max-width: 768px) {
+        .top-bar-links {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .left-links, .right-links {
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+
+        .left-links a, .right-links a {
+            margin: 5px 0;
+        }
+
+        .left-links a:not(:last-child)::after,
+        .right-links a:not(:last-child)::after {
+            content: "";
+            margin: 0;
+        }
+
+        .nav-links {
+            display: none;
+        }
+        
+        .menu-toggle {
+            display: block;
+        }
+        
+        .nav-links.active {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+        
+        .nav-links.active a {
+            padding: 10px 0;
+        }
+    }
+</style>
+
+<div class="top-bar">
+    <div class="top-bar-links">
+        <div class="left-links">
+            <a href="#">ADMISSION PORTAL</a>
+            <a href="#">STUDENTS PORTAL</a>
+            <a href="#">STAFF PORTAL</a>
+            <a href="#">QMS PORTAL</a>
+        </div>
+        <div class="right-links">
+            <a href="#">LIBRARY</a>
+            <a href="#">ELEARNING</a>
+            <a href="#">STAFF EMAIL</a>
+            <a href="#">COVID 19 INFORMATION</a>
         </div>
     </div>
-    
-    <nav class="navbar">
-        <div class="navbar-container">
-            <div class="logo-container">
-                <img src="https://africanplanningschools.org.za/images/featured-images/member-schools/jaramogi-oginga-odinga-university-of-science-and-technology.jpg" alt="JOOUST Logo" class="logo-img">
-                <div class="logo-text">
-                    <h1 style="font-family: 'Impact', 'Oswald', sans-serif; font-size: 32px; font-weight: bold; color: #001F54; margin: 0; font-size: 20px;">
-                        Jaramogi Oginga Odinga
-                    </h1>
-                    <p style="font-family: 'Arial Black', 'Montserrat', sans-serif; font-size: 18px; font-weight: bold; color: #001F54; margin: 0; font-size: 12px;">
-                        University of Science and Technology
-                    </p>
-                    <p style="font-family: 'Brush Script MT', 'Pacifico', cursive; font-size: 16px; font-style: italic; color: #001F54; margin-top: 5px; font-size: 10px;">
-                        Oasis of Knowledge
-                    </p>
-                </div>
-                
-            
-            <div class="menu-toggle">☰</div>
-            
-            <div class="nav-links">
-                <a href="#">HOME</a>
-                <div class="dropdown">
-                    <a href="#">ABOUT JOOUST</a>
-                    <div class="dropdown-content">
-                        <a href="#">Link 1</a>
-                        <a href="#">Link 2</a>
-                        <a href="#">Link 3</a>
-                    </div>
-                </div>
-                <div class="dropdown">
-                    <a href="#">ACADEMICS</a>
-                    <div class="dropdown-content">
-                        <a href="#">Link 1</a>
-                        <a href="#">Link 2</a>
-                        <a href="#">Link 3</a>
-                    </div>
-                </div>
-                <div class="dropdown">
-                    <a href="#">ADMISSIONS</a>
-                    <div class="dropdown-content">
-                        <a href="#">Link 1</a>
-                        <a href="#">Link 2</a>
-                        <a href="#">Link 3</a>
-                    </div>
-                </div>
-                <div class="dropdown">
-                    <a href="#">RESEARCH</a>
-                    <div class="dropdown-content">
-                        <a href="#">Link 1</a>
-                        <a href="#">Link 2</a>
-                        <a href="#">Link 3</a>
-                    </div>
-                </div>
-                <a href="#">The OASIS</a>
-                <a href="#">CONTACTS</a>
+</div>
+
+<nav class="navbar">
+    <div class="navbar-container">
+        <div class="logo-container">
+            <img src="https://africanplanningschools.org.za/images/featured-images/member-schools/jaramogi-oginga-odinga-university-of-science-and-technology.jpg" alt="JOOUST Logo" class="logo-img">
+            <div class="logo-text">
+                <h1 style="font-family: 'Impact', 'Oswald', sans-serif; font-size: 20px; font-weight: bold; color: #001F54; margin: 0;">
+                    Jaramogi Oginga Odinga
+                </h1>
+                <p style="font-family: 'Arial Black', 'Montserrat', sans-serif; font-size: 12px; font-weight: bold; color: #001F54; margin: 0;">
+                    University of Science and Technology
+                </p>
+                <p style="font-family: 'Brush Script MT', 'Pacifico', cursive; font-size: 10px; font-style: italic; color: #001F54; margin-top: 5px;">
+                    Oasis of Knowledge
+                </p>
             </div>
         </div>
-    </nav>
-    
-    <script>
-    document.querySelector('.menu-toggle').addEventListener('click', function() {
-        document.querySelector('.nav-links').classList.toggle('active');
-    });
-    </script>
+
+        <div class="menu-toggle">☰</div>
+        
+        <div class="nav-links">
+            <a href="#">HOME</a>
+            <div class="dropdown">
+                <a href="#">ABOUT JOOUST</a>
+                <div class="dropdown-content">
+                    <a href="#">Link 1</a>
+                    <a href="#">Link 2</a>
+                    <a href="#">Link 3</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="#">ACADEMICS</a>
+                <div class="dropdown-content">
+                    <a href="#">Link 1</a>
+                    <a href="#">Link 2</a>
+                    <a href="#">Link 3</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="#">ADMISSIONS</a>
+                <div class="dropdown-content">
+                    <a href="#">Link 1</a>
+                    <a href="#">Link 2</a>
+                    <a href="#">Link 3</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="#">RESEARCH</a>
+                <div class="dropdown-content">
+                    <a href="#">Link 1</a>
+                    <a href="#">Link 2</a>
+                    <a href="#">Link 3</a>
+                </div>
+            </div>
+            <a href="#">The OASIS</a>
+            <a href="#">CONTACTS</a>
+            <a href="{% url 'login' %}">LOGIN</a>
+        </div>
+    </div>
+</nav>
+
+<script>
+document.querySelector('.menu-toggle').addEventListener('click', function() {
+    document.querySelector('.nav-links').classList.toggle('active');
+});
+</script>
